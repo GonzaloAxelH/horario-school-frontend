@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ComponenteProyegido } from "../pages/PageCurso";
 import { Link } from "react-router-dom";
 import menuImg from "../../images/menu.png";
 import back from "../../images/back.png";
@@ -80,9 +81,8 @@ const BackArrow = styled.img`
   margin-top: 5px;
 `;
 
-const NavTopCurso = ({ handelClickCloseNavLeft, cod }) => {
+const NavTopCurso = ({ handelClickCloseNavLeft, data }) => {
   const [ruta, setRuta] = useState("");
-  console.log({ ruta });
   useEffect(() => {
     setRuta(
       window.location.href.substring(window.location.href.lastIndexOf("/") + 1)
@@ -94,8 +94,10 @@ const NavTopCurso = ({ handelClickCloseNavLeft, cod }) => {
         <Link to="/">
           <BackArrow src={back} />
         </Link>
-        <MenuToggle onClick={handelClickCloseNavLeft} src={menuImg} />
-        <WrapperTitle>CURSO CALIDAD DE SOFTWARE</WrapperTitle>
+        <ComponenteProyegido on={false}>
+          <MenuToggle onClick={handelClickCloseNavLeft} src={menuImg} />
+        </ComponenteProyegido>
+        <WrapperTitle>{data}</WrapperTitle>
         <InfoUser>
           <ImgUser src={imgUser} />
         </InfoUser>
@@ -103,28 +105,33 @@ const NavTopCurso = ({ handelClickCloseNavLeft, cod }) => {
       <NavBottom>
         <ItemNav
           select={
-            ruta == "novedades"
+              ruta === "conferencias"
               ? false
-              : ruta == "trabajoenclase"
+              : ruta === "trabajoenclase"
               ? false
-              : ruta == "personas"
+              : ruta === "personas"
               ? false
-              : true
+              : ruta === "materiales"
+              ? false:true
           }
-          to={`/curso/${cod}/`}
+          to={`/curso/${data}/`}
         >
           Hoy
         </ItemNav>
-        <ItemNav select={ruta === "novedades"} to={`/curso/${cod}/novedades`}>
-          Novedades
+        <ItemNav select={ruta === "conferencias"} to={`/curso/${data}/conferencias`}>
+          Conferencias
         </ItemNav>
         <ItemNav
           select={ruta === "trabajoenclase"}
-          to={`/curso/${cod}/trabajoenclase`}
+          to={`/curso/${data}/trabajoenclase`}
         >
-          Trabajo en clase
+          Trabajos en clase
         </ItemNav>
-        <ItemNav select={ruta === "personas"} to={`/curso/${cod}/personas`}>
+
+        <ItemNav select={ruta === "materiales"} to={`/curso/${data}/materiales`}>
+          Materiales
+        </ItemNav>
+        <ItemNav select={ruta === "personas"} to={`/curso/${data}/personas`}>
           Personas
         </ItemNav>
       </NavBottom>

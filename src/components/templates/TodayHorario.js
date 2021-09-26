@@ -72,10 +72,13 @@ const TodayHorario = () => {
   };
 
   const codigos = {
-    PROG_VIDE: "g4hg6db51g",
-    DA_MIN: "dfs4546gbg",
-    PRO_INV: "g45df654vf65",
-    ALG_PAR: "te654f654",
+    PROG_VIDE: {
+      codigo: "sdf5ds55",
+      name: "PROGRAMACION DE VIDEOJUEGOS",
+    },
+    DA_MIN: { codigo: "dfs4546gbg", name: "DATA MINING" },
+    PRO_INV: { codigo: "g45df654vf65", name: "PROYETO DE INVESTIGACION" },
+    ALG_PAR: { codigo: "te654f654", name: "ALGORITMOS PARALELOS" },
   };
   return (
     <WrapperTodayHorario open={openSidebar}>
@@ -88,7 +91,7 @@ const TodayHorario = () => {
       <MiniCalendar src={calendarImg} alt="s" />
       <HiddenSidebar onClick={handleOpen} src={sidebarImg} alt="s" />
       <ItemCurso
-        cod={codigos.PROG_VIDE}
+        data={codigos.PROG_VIDE.name}
         title="PROGRAMACION DE VIDEOJUEGOS"
         docente="LIMACHE FLORES, ALBERTO"
         participants="12"
@@ -98,7 +101,7 @@ const TodayHorario = () => {
         contraido={openSidebar}
       />
       <ItemCurso
-        cod={codigos.DA_MIN}
+        data={codigos.DA_MIN.name}
         title="DATA MINING"
         docente="FLORES GUTIERREZ, VANEZA"
         participants="7"
@@ -108,7 +111,7 @@ const TodayHorario = () => {
         contraido={openSidebar}
       />
       <ItemCurso
-        cod={codigos.PRO_INV}
+        data={codigos.PRO_INV.name}
         title="PROYECTO DE INVESTIGACION I"
         docente="LOAIZA FERNANDEZ, MANUEL "
         participants="11"
@@ -118,7 +121,7 @@ const TodayHorario = () => {
         contraido={openSidebar}
       />
       <ItemCurso
-        cod={codigos.ALG_PAR}
+        data={codigos.ALG_PAR.name}
         title="ALGORITMOS PARALELOS"
         docente="LIMACHE FLORES, ALBERTO"
         participants="30"
@@ -132,4 +135,3 @@ const TodayHorario = () => {
 };
 
 export default TodayHorario;
-

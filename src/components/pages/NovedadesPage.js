@@ -1,11 +1,12 @@
+import {useParams} from "react-router-dom";
 import styled from "styled-components";
-import { useParams } from "react-router";
+
 import PageCurso from "./PageCurso";
-const NovedadesPage = () => {
+const NovedadesPage = (props) => {
   const { id } = useParams();
   return (
-    <PageCurso cod={id}>
-      <h1>Novedades:{id}</h1>
+    <PageCurso data={id}>
+      <h1>Conferencias</h1>
     </PageCurso>
   );
 };

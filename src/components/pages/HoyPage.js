@@ -1,10 +1,11 @@
 import PageCurso from "./PageCurso"
-import { useParams } from "react-router";
+import PortadaCurso from "../templates/PortadaCurso";
+import {useParams} from "react-router-dom";
 const HoyPage = () => {
-  const { id } = useParams();
+  const { id } =  useParams()
   return (
-      <PageCurso cod={id}>
-            <h1>Hoy</h1>
+      <PageCurso data={id}>
+        <PortadaCurso data={id}/>
       </PageCurso>
   )
 }

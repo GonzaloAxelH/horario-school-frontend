@@ -105,13 +105,14 @@ const ItemCurso = ({
   warning,
   infomation,
   contraido,
-  cod,
+  data,
 }) => {
   const [toggleInformation, setToggleInformation] = useState(false);
   const openInformation = () => setToggleInformation(!toggleInformation);
+
   return (
     <ItemWrapper fondo={color} large={toggleInformation}>
-      <TitleCurse contraido={contraido} to={`/curso/${cod}`}>
+      <TitleCurse contraido={contraido} to={`/curso/${data}`}>
         {title}
       </TitleCurse>
       <NameDocente contraido={contraido}>{docente}</NameDocente>
