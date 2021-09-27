@@ -7,29 +7,34 @@ const WrapperTrabajos = styled.div`
   margin-top: 2em;
 `;
 const WrapperMenuOptions = styled.div`
-  width: 90%;
   display: flex;
+  width:95vw;
   justify-content: center;
-  margin: 2em 0;
+  margin:2em 0;
   overflow-y: hidden;
   height: 25px;
+  max-width:100vw;
+  box-sizing:border-box;
+  @media(max-width:554px){
+    justify-content: flex-start;
+  }
 `;
 const ItemMenuOption = styled.div`
-  border: 2px solid gray;
+  border: 1px solid #C2C2C2;
   margin: 0 1em;
   border-radius: 30px;
   padding: 0.2em 1em;
   display: flex;
-  width: auto;
+  min-width:150px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   p {
     font-size: 13px;
   }
-
   background: ${(props) => (props.on ? "#E6F4EA" : "transparent")};
   p {
+  justify-content: center;
     color: ${(props) => (props.on ? "#137333" : "gray")};
   }
 `;
@@ -53,20 +58,15 @@ export const MenuOptions = ({ on, handelClickSelect }) => {
         on={on === "3" ? true : false}
         onClick={() => handelClickSelect(3)}
       >
-        <p>Ante Ayer</p>
+        <p>Semana Pasada</p>
       </ItemMenuOption>
       <ItemMenuOption
         on={on === "4" ? true : false}
         onClick={() => handelClickSelect(4)}
       >
-        <p>Semana Pasada</p>
-      </ItemMenuOption>
-      <ItemMenuOption
-        on={on === "5" ? true : false}
-        onClick={() => handelClickSelect(5)}
-      >
         <p>Todo</p>
       </ItemMenuOption>
+    
     </WrapperMenuOptions>
   );
 };

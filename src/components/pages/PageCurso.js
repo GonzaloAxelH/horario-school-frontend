@@ -5,7 +5,7 @@ import NavTopCurso from "../templates/NavTopCurso";
 const ContainerCurso = styled.div`
   display: flex;
   width: 100vw;
-  height: 100vh;
+  height: 200vh;
 `;
 
 const WrapperAct = styled.div`
@@ -18,11 +18,12 @@ const WrapperAct = styled.div`
 
 export const ComponenteProyegido = ({ children, on, setOpenNavLeft }) => {
   let [wrapRef, setWrapRef] = useState(null);
-
+  
   const handleClickOutside = (event) => {
     if (wrapRef && !wrapRef.contains(event.target)) {
       alert("Hiciste click fuera");
       setOpenNavLeft();
+
     }
   };
 

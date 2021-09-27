@@ -1,7 +1,6 @@
 import equisImg from "../../images/wrong.png";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
-import { ComponenteProyegido } from "../pages/PageCurso";
+
 const Wrapper = styled.div`
   position: fixed;
   width: 333px;
@@ -23,7 +22,7 @@ const WrongImg = styled.img`
   width: 20px;
 `;
 
-const NavLeftCurso = ({ handelClickOpenNavLeft, open, cod }) => {
+const NavLeftCurso = ({ handelClickOpenNavLeft, open}) => {
   return (
     <Wrapper open={open}>
       <CloseNav onClick={handelClickOpenNavLeft}>

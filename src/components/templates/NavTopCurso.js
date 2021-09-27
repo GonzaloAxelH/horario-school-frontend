@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import { ComponenteProyegido } from "../pages/PageCurso";
 import { Link } from "react-router-dom";
-import menuImg from "../../images/menu.png";
-import back from "../../images/back.png";
+import HamburguerMenu from "../atoms/svg/HamburguerMenu";
 import { useEffect, useState } from "react";
 let imgUser =
   "https://lh3.googleusercontent.com/ogw/ADea4I6G9ODbVrzpSzl8oZhIwXpg8aP6dxx2HnD4g84y=s32-c-mo";
 const WrapperNav = styled.div`
-  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
   box-sizing: content;
   width: 100%;
   height: 128px;
@@ -15,17 +13,28 @@ const WrapperNav = styled.div`
   position: fixed;
   border-bottom: 1px solid #e4e4e4;
   grid-template-row: 1fr 1fr;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 `;
 const NavTop = styled.div`
-  padding: 0 2em;
-  width: 100%;
+  width: 100vw;
+  overflow: visible;
   display: grid;
-  grid-template-columns: 1fr 4fr 20fr 3fr;
+  grid-template-columns: 1fr 20fr 2fr 2fr;
   align-items: center;
+  padding: 0 2em;
+  @media(max-width:554px){
+   padding: 0 1em;
+  }
 `;
 const WrapperTitle = styled.div`
   color: #000;
   font-size: 22px;
+  margin-left: 1em;
+  @media(max-width:554px){
+    font-size:17px;
+    width:100%;
+  }
 `;
 const ImgUser = styled.img`
   border-radius: 50%;
@@ -34,7 +43,12 @@ const ImgUser = styled.img`
 const NavBottom = styled.div`
   display: flex;
   justify-content: center;
+  margin:0 1em;
+  overflow-y: hidden;
   align-items: center;
+  @media(max-width:554px){
+    justify-content: flex-start;
+  }
 `;
 const InfoUser = styled.div`
   display: flex;
@@ -49,7 +63,8 @@ const ItemNav = styled(Link)`
   font-size: 14px;
   cursor: pointer;
   &:hover {
-    background: ${(props) => (props.select ? "#E6F4EA" : "#e4e4e4")};
+    background: ${(props) =>
+      props.select ? "rgba(230, 244, 234,0.4 )" : "rgba(228, 228, 228, 0.4)"};
   }
   height: 100%;
   text-align: center;
@@ -70,17 +85,14 @@ const ItemNav = styled(Link)`
   }
   transition: 0s all;
 `;
-const MenuToggle = styled.img`
+const MenuToggle = styled.div`
   width: 25px;
   height: 20px;
   cursor: pointer;
 `;
 
-const BackArrow = styled.img`
-  height: 20px;
-  margin-top: 5px;
+const Other = styled.div`
 `;
-
 const NavTopCurso = ({ handelClickCloseNavLeft, data }) => {
   const [ruta, setRuta] = useState("");
   useEffect(() => {
@@ -88,37 +100,39 @@ const NavTopCurso = ({ handelClickCloseNavLeft, data }) => {
       window.location.href.substring(window.location.href.lastIndexOf("/") + 1)
     );
   });
+  const checkSelectItem = (ruta) => {
+    return ruta === "conferencias"
+      ? false
+      : ruta === "trabajoenclase"
+      ? false
+      : ruta === "personas"
+      ? false
+      : ruta === "materiales"
+      ? false
+      : true;
+  };
   return (
     <WrapperNav>
       <NavTop>
-        <Link to="/">
-          <BackArrow src={back} />
-        </Link>
-        <ComponenteProyegido on={false}>
-          <MenuToggle onClick={handelClickCloseNavLeft} src={menuImg} />
-        </ComponenteProyegido>
+        <MenuToggle onClick={handelClickCloseNavLeft} >
+          <HamburguerMenu />
+        </MenuToggle>
         <WrapperTitle>{data}</WrapperTitle>
+        <Other>
+        </Other>
         <InfoUser>
           <ImgUser src={imgUser} />
         </InfoUser>
+
       </NavTop>
       <NavBottom>
-        <ItemNav
-          select={
-              ruta === "conferencias"
-              ? false
-              : ruta === "trabajoenclase"
-              ? false
-              : ruta === "personas"
-              ? false
-              : ruta === "materiales"
-              ? false:true
-          }
-          to={`/curso/${data}/`}
-        >
+        <ItemNav select={checkSelectItem(ruta)} to={`/curso/${data}/`}>
           Hoy
         </ItemNav>
-        <ItemNav select={ruta === "conferencias"} to={`/curso/${data}/conferencias`}>
+        <ItemNav
+          select={ruta === "conferencias"}
+          to={`/curso/${data}/conferencias`}
+        >
           Conferencias
         </ItemNav>
         <ItemNav
@@ -128,7 +142,10 @@ const NavTopCurso = ({ handelClickCloseNavLeft, data }) => {
           Trabajos en clase
         </ItemNav>
 
-        <ItemNav select={ruta === "materiales"} to={`/curso/${data}/materiales`}>
+        <ItemNav
+          select={ruta === "materiales"}
+          to={`/curso/${data}/materiales`}
+        >
           Materiales
         </ItemNav>
         <ItemNav select={ruta === "personas"} to={`/curso/${data}/personas`}>

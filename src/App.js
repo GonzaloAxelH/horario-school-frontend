@@ -23,6 +23,7 @@ const App = () => {
           <HoyPage />
         </Route>
         <Route path={`/curso/:id/conferencias`}>
+          
           <NovedadesPage />
         </Route>
         <Route path={`/curso/:id/trabajoenclase`}>
@@ -31,7 +32,7 @@ const App = () => {
         <Route path={`/curso/:id/personas`}>
           <PersonasPage />
         </Route>
-       <Route path={`/curso/:id/materiales`}>
+        <Route path={`/curso/:id/materiales`}>
           <MaterialesPage />
         </Route>
       </Switch>
