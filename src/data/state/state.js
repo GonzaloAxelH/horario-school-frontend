@@ -22,17 +22,6 @@ export const inicialState = {
                     name:'RECURSO 1',
                     capture:'capture.png',
                     typefile:'PTT'
-                },{
-                    id:2,
-                    name:'RECURSO 2',
-                    capture:'capture.png',
-                    typefile:'PDF'
-                },
-                 {
-                    id:1,
-                    name:'RECURSO 1',
-                    capture:'capture.png',
-                    typefile:'PTT'
                 }
               
             ],

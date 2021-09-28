@@ -5,14 +5,17 @@ import checkImg from "../../images/check.png";
 import arrowdowImg from "../../images/down-arrow.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+const imgCurso = "https://www.gstatic.com/classroom/themes/img_bookclub.jpg";
 const ItemWrapper = styled.div`
   position: relative;
   width: 90%;
   border: none;
   box-shadow: 0px 3px 18px -8px gray;
-  background: #f5f5f5;
-  background: ${(props) => props.fondo};
-  border-radius: 10px;
+  background:url('${imgCurso}');
+  background-position: center;
+	background-size: cover;
+  border-radius: 7px;
   height: ${(props) => (props.large ? "13em" : "7em")};
   max-height: 13em;
   margin: 1em 0 0 0;
@@ -23,23 +26,22 @@ const ItemWrapper = styled.div`
 const TitleCurse = styled(Link)`
   display: flex;
   width: ${(props) => (!props.contraido ? "80%" : "60%")};
-  font-weight: bold;
-  font-size: ${(props) => (!props.contraido ? "13px" : "15px")};
-  font-weight: bold;
+  font-size: ${(props) => (!props.contraido ? "13px" : "17px")};
   text-decoration: none;
-  color: #000;
-  margin: 0.4em 0 0 0;
+  &:hover{
+    text-decoration: underline;
+  }
+  color: #fff;
+  margin: 0.4em 0 0.5em 0;
 `;
 const NameDocente = styled.p`
-  color: gray;
-  font-size: 13px;
-  color: #1c2833;
+  font-size: 11px;
+  color: #fff;
   display: ${(props) => (!props.contraido ? "none" : "block")};
 `;
 const Participants = styled.p`
-  color: gray;
   font-size: 12px;
-  color: #1c2833;
+  color: #fff;
   display: ${(props) => (!props.contraido ? "none" : "block")};
 `;
 const ArrowImg = styled.img`
@@ -70,7 +72,7 @@ const WarningInfo = styled.div`
 
 const Info = styled.span`
   font-size: 11px;
-  color: #1c2833;
+  color: #fff;
   word-wrap: break-word;
   margin: 0 0.5em;
   align-items: center;
@@ -82,7 +84,7 @@ const ArrowDown = styled.img`
   right: 8%;
   bottom: 8px;
   transform: translateX(-50%)
-    rotate(${(props) => (props.large ? "180deg" : "0deg")});
+  rotate(${(props) => (props.large ? "180deg" : "0deg")});
   transition: 0.5s all;
   display: ${(props) => (!props.contraido ? "none" : "inline-block")};
   cursor: pointer;
@@ -93,6 +95,7 @@ const ArrowDown = styled.img`
 const InfoExtra = styled.div`
   margin: 1em 0 1.5em 0;
   transition: 0.5s all;
+  color:#fff;
   height: ${(props) => (props.large ? "6em" : "0")};
   overflow: hidden;
 `;
@@ -106,13 +109,13 @@ const ItemCurso = ({
   infomation,
   contraido,
   data,
+  closeNavLeft
 }) => {
   const [toggleInformation, setToggleInformation] = useState(false);
   const openInformation = () => setToggleInformation(!toggleInformation);
-
   return (
     <ItemWrapper fondo={color} large={toggleInformation}>
-      <TitleCurse contraido={contraido} to={`/curso/${data}`}>
+      <TitleCurse onClick={closeNavLeft} contraido={contraido} to={`/curso/${data}`}>
         {title}
       </TitleCurse>
       <NameDocente contraido={contraido}>{docente}</NameDocente>
@@ -120,7 +123,7 @@ const ItemCurso = ({
         {" "}
         <b>{participants}</b> Participantes
       </Participants>
-      <ArrowImg contraido={contraido} src={arrowImg} alt="image" />
+     
       <WarningInfo contraido={contraido}>
         {warning ? (
           <Exclamation src={exclamationImg} alt="Asa" />

@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import HamburguerMenu from "../atoms/svg/HamburguerMenu";
 import { useEffect, useState } from "react";
+import { ComponenteProyegido } from "../pages/PageCurso";
 let imgUser =
   "https://lh3.googleusercontent.com/ogw/ADea4I6G9ODbVrzpSzl8oZhIwXpg8aP6dxx2HnD4g84y=s32-c-mo";
 const WrapperNav = styled.div`
   background: rgba(255, 255, 255, 0.8);
   box-sizing: content;
   width: 100%;
-  height: 128px;
+  height: 100px;
   display: grid;
   position: fixed;
   border-bottom: 1px solid #e4e4e4;
@@ -20,7 +21,7 @@ const NavTop = styled.div`
   width: 100vw;
   overflow: visible;
   display: grid;
-  grid-template-columns: 1fr 20fr 2fr 2fr;
+  grid-template-columns: 1fr 1fr 20fr 2fr 2fr;
   align-items: center;
   padding: 0 2em;
   @media(max-width:554px){
@@ -114,9 +115,10 @@ const NavTopCurso = ({ handelClickCloseNavLeft, data }) => {
   return (
     <WrapperNav>
       <NavTop>
-        <MenuToggle onClick={handelClickCloseNavLeft} >
+       <MenuToggle onClick={handelClickCloseNavLeft} >
           <HamburguerMenu />
         </MenuToggle>
+        <Other></Other>
         <WrapperTitle>{data}</WrapperTitle>
         <Other>
         </Other>

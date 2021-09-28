@@ -3,6 +3,7 @@ import ItemCurso from "../organims/ItemCurso";
 import { useState } from "react";
 import sidebarImg from "../../images/sidebar.png";
 import calendarImg from "../../images/calendar.png";
+
 const medida = {
   desktop: "768px",
   tablet: "826px",
@@ -14,7 +15,7 @@ const medida = {
 const WrapperTodayHorario = styled.div`
   position: relative;
   display: flex;
-  width: ${(props) => (props.open ? "650px" : "220px")};
+  width: ${(props) => (props.open ? "550px" : "220px")};
   overflow-x: hidden;
   background: #f5f5f5;
   margin: 1em;
@@ -65,12 +66,11 @@ const MiniCalendar = styled.img`
   top: 1em;
   cursor: pointer;
 `;
-const TodayHorario = () => {
-  const [openSidebar, setOpenSidebar] = useState(true);
+const TodayHorario = ({expandible,closeNavLeft}) => {
+  const [openSidebar, setOpenSidebar] = useState(false);
   const handleOpen = () => {
     setOpenSidebar(!openSidebar);
-  };
-
+  };  
   const codigos = {
     PROG_VIDE: {
       codigo: "sdf5ds55",
@@ -88,8 +88,8 @@ const TodayHorario = () => {
           <b>Septiembre</b>
         </MonthDate>
       </WrapperInfoHoy>
-      <MiniCalendar src={calendarImg} alt="s" />
-      <HiddenSidebar onClick={handleOpen} src={sidebarImg} alt="s" />
+      
+     {expandible ? <HiddenSidebar onClick={handleOpen} src={sidebarImg} alt="s" /> :"" } 
       <ItemCurso
         data={codigos.PROG_VIDE.name}
         title="PROGRAMACION DE VIDEOJUEGOS"
@@ -99,6 +99,7 @@ const TodayHorario = () => {
         infomation="info"
         color="#C39BD3"
         contraido={openSidebar}
+        closeNavLeft={closeNavLeft}
       />
       <ItemCurso
         data={codigos.DA_MIN.name}
@@ -109,6 +110,8 @@ const TodayHorario = () => {
         infomation="info"
         color="#FF5733"
         contraido={openSidebar}
+        
+        closeNavLeft={closeNavLeft}
       />
       <ItemCurso
         data={codigos.PRO_INV.name}
@@ -119,6 +122,8 @@ const TodayHorario = () => {
         infomation="info"
         color="#82E0AA"
         contraido={openSidebar}
+      
+        closeNavLeft={closeNavLeft}
       />
       <ItemCurso
         data={codigos.ALG_PAR.name}
@@ -129,6 +134,7 @@ const TodayHorario = () => {
         infomation="info"
         color="#FFC300"
         contraido={openSidebar}
+        closeNavLeft={closeNavLeft}
       />
     </WrapperTodayHorario>
   );

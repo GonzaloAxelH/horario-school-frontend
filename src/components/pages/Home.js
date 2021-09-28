@@ -27,10 +27,9 @@ const WrapperCursoFull = styled.div`
 const Home = () => {
     return (
         <WrapperHome>
-            <TodayHorario />
+            <TodayHorario expandible={true} />
             <WrapperCursoFull>
                 calendar
-       
             </WrapperCursoFull>
         </WrapperHome>)
 }

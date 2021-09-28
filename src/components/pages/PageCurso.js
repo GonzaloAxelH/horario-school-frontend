@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import NavLeftCurso from "../templates/NavLeftCurso";
 import NavTopCurso from "../templates/NavTopCurso";
+
 const ContainerCurso = styled.div`
   display: flex;
   width: 100vw;
@@ -16,42 +17,40 @@ const WrapperAct = styled.div`
   width: 100%;
 `;
 
-export const ComponenteProyegido = ({ children, on, setOpenNavLeft }) => {
-  let [wrapRef, setWrapRef] = useState(null);
-  
-  const handleClickOutside = (event) => {
-    if (wrapRef && !wrapRef.contains(event.target)) {
-      alert("Hiciste click fuera");
-      setOpenNavLeft();
+export const ComponenteProyegido = ({ children,closeNavLeftClickAfuera}) => {
+  useEffect(()=>{
+      let body = document.getElementById('body');
+      body.addEventListener('click',(e)=>{
+        setClose();
+      })
+  })
+  const setClose = () => {
+      closeNavLeftClickAfuera();
+  }
 
-    }
-  };
-
-  const setWrapperRef = (node) => {
-    wrapRef = node;
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  });
-
-  return on ? <div ref={setWrapperRef}>{children}</div> : <div>{children}</div>;
+  const handleClick = (e)=>{
+    e.stopPropagation();
+  }
+  return <div onClick={handleClick}>
+        {children}
+    </div>
 };
 
 const PageCurso = ({ children, data }) => {
   const [navLeft, setNavLeft] = useState(false);
+  const closeNavLeftClickAfuera = () => setNavLeft(false);
   return (
     <ContainerCurso>
       <NavTopCurso
         data={data}
-        handelClickCloseNavLeft={() => setNavLeft(true)}
+        handelClickCloseNavLeft={(e) => {
+          setNavLeft(true)
+          e.stopPropagation();
+        }}
       />
       <ComponenteProyegido
         open={navLeft}
-        setOpenNavLeft={() => setNavLeft(false)}
+        closeNavLeftClickAfuera={closeNavLeftClickAfuera}
       >
         <NavLeftCurso
           handelClickOpenNavLeft={() => setNavLeft(false)}
