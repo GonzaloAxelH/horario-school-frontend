@@ -2,6 +2,9 @@ import PageCurso from "./PageCurso";
 import { useParams } from "react-router";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import ItemMaterial from "../organims/ItemMaterial";
+import { connect } from "react-redux";
+
 
 const WrapperTrabajos = styled.div`
   margin-top: 2em;
@@ -71,14 +74,30 @@ export const MenuOptions = ({ on, handelClickSelect }) => {
   );
 };
 
-const Trabajoenclase = () => {
+
+const ListMateriales = styled.div`
+
+  width:60vw;
+    @media (max-width:715px){
+    background-size:cover;
+    background-repeat:no-repeat;
+    width:75vw;
+  }
+
+  @media (max-width:530px){
+    width:92vw;
+  }
+`;
+
+
+const Trabajoenclase = ({tareas}) => {
   const { id } = useParams();
   const [on, setOn] = useState(
     localStorage.getItem("num") === null ? "1" : localStorage.getItem("num")
   );
   useEffect(() => {
     const numOption =
-      localStorage.getItem("num") === null ? "1" : localStorage.getItem("num");
+    localStorage.getItem("num") === null ? "1" : localStorage.getItem("num");
     setOn(numOption);
   });
   return (
@@ -92,9 +111,24 @@ const Trabajoenclase = () => {
           }
         }}
       />
-      <WrapperTrabajos dateOption={on}></WrapperTrabajos>
+      <WrapperTrabajos dateOption={on}>
+      <ListMateriales>
+        {tareas.map(tarea => {
+          return tarea.type === 'TASK' ?  
+          <ItemMaterial  data={tarea}/>: 
+          ""
+        })}
+        </ListMateriales>       
+      </WrapperTrabajos>
     </PageCurso>
   );
 };
 
-export default Trabajoenclase;
+const mapStateToProps = (state) =>{
+  return {
+    tareas:state.tareas
+  }
+}
+
+
+export default connect(mapStateToProps)(Trabajoenclase);

@@ -5,7 +5,7 @@ import NavTopCurso from "../templates/NavTopCurso";
 const ContainerCurso = styled.div`
   display: flex;
   width: 100vw;
-  height: 200vh;
+  min-height: 120vh;
 `;
 
 const WrapperAct = styled.div`

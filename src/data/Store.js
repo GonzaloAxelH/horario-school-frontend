@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import { counter } from './reducers/counterReducer'
+import { tareasReducer } from './reducers/counterReducer'
 import { inicialState } from "./state/state";
 
 const theme = (state = inicialState.darkTheme, action) => {
@@ -8,4 +8,6 @@ const theme = (state = inicialState.darkTheme, action) => {
     return state;
 }
 
-export default createStore(combineReducers({ counter, theme }), applyMiddleware(thunk))
+export default createStore(combineReducers({
+     tareas:tareasReducer
+     , theme }), applyMiddleware(thunk))

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { MenuOptions } from "./Trabajoenclase";
 import { useEffect, useState } from "react";
 import  ItemMaterial  from '../organims/ItemMaterial'
+import { connect } from "react-redux";
 
 const ListMateriales = styled.div`
 
@@ -21,17 +22,17 @@ const ListMateriales = styled.div`
 
 
 const Wrapper = styled.div``;
-const MaterialesPages = () => {
+const MaterialesPages = ({tareas}) => {
   const { id } = useParams();
   const [on, setOn] = useState(
     localStorage.getItem("num2") === null ? "1" : localStorage.getItem("num2")
   );
-  useEffect(() => {
-    const numOption =
-      localStorage.getItem("num2") === null
-        ? "1"
-        : localStorage.getItem("num2");
+  const [data,setData] = useState(tareas ? tareas : [])
+  useEffect(() => {    
+    let getItem = localStorage.getItem("num2")
+    const numOption =getItem === null ? "1": getItem;
     setOn(numOption);
+    
   });
   return (
     <PageCurso data={id}>
@@ -46,16 +47,19 @@ const MaterialesPages = () => {
       />
       <Wrapper>
         <ListMateriales>
-          <ItemMaterial />
-          <ItemMaterial />
-          <ItemMaterial />
-          <ItemMaterial />
-          <ItemMaterial />
-          <ItemMaterial />
+            {data.map((tarea)=> {
+                return tarea.type === 'MATERIAL' ? <ItemMaterial data={tarea} /> : ""
+            })}
         </ListMateriales>
       </Wrapper>
     </PageCurso>
   );
 };
 
-export default MaterialesPages;
+const mapStateToProps = (state) =>{
+  return {
+    tareas:state.tareas
+  }
+}
+
+export default connect(mapStateToProps,null)(MaterialesPages)

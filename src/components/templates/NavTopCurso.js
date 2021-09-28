@@ -139,7 +139,7 @@ const NavTopCurso = ({ handelClickCloseNavLeft, data }) => {
           select={ruta === "trabajoenclase"}
           to={`/curso/${data}/trabajoenclase`}
         >
-          Trabajos en clase
+          Trabajos de clase
         </ItemNav>
 
         <ItemNav
