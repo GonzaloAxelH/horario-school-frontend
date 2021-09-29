@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import  ItemMaterial  from '../organims/ItemMaterial'
 import { connect } from "react-redux";
 
-const ListMateriales = styled.div`
 
+const ListMaterials = styled.div`
   width:60vw;
     @media (max-width:715px){
     background-size:cover;
@@ -17,6 +17,9 @@ const ListMateriales = styled.div`
 
   @media (max-width:530px){
     width:92vw;
+  }
+  @media(max-width: 530px){
+    width:92px;
   }
 `;
 
@@ -46,15 +49,16 @@ const MaterialesPages = ({tareas}) => {
         }}
       />
       <Wrapper>
-        <ListMateriales>
+        <ListMaterials>
             {data.map((tarea)=> {
                 return tarea.type === 'MATERIAL' ? <ItemMaterial data={tarea} /> : ""
             })}
-        </ListMateriales>
+        </ListMaterials>
       </Wrapper>
     </PageCurso>
   );
 };
+
 
 const mapStateToProps = (state) =>{
   return {

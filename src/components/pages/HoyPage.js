@@ -44,8 +44,7 @@ width:225px;
   margin:0 24px 24px 0;
 `;
 const InfoTaksPending = styled.div`
-  margin-top:1em;
-} 
+  margin-top:1em; 
 `;
 const ListMateriales = styled.div`
     width:60vw;
