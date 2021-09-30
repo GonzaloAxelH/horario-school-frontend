@@ -9,6 +9,15 @@ const ContainerCurso = styled.div`
   min-height: 120vh;
 `;
 
+
+const WrapperAct = styled.div`
+  display:flex;
+  flex-direction:column;
+  align-self: center;
+  margin-top:128px;
+  width:100%;
+`;
+
 const WrapperAct = styled.div`
   display: flex;
   flex-direction: column;
