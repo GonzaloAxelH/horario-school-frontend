@@ -66,11 +66,11 @@ const MiniCalendar = styled.img`
   top: 1em;
   cursor: pointer;
 `;
-const TodayHorario = ({expandible,closeNavLeft}) => {
+const TodayHorario = ({ expandible, closeNavLeft }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const handleOpen = () => {
     setOpenSidebar(!openSidebar);
-  };  
+  };
   const codigos = {
     PROG_VIDE: {
       codigo: "sdf5ds55",
@@ -80,6 +80,16 @@ const TodayHorario = ({expandible,closeNavLeft}) => {
     PRO_INV: { codigo: "g45df654vf65", name: "PROYETO DE INVESTIGACION" },
     ALG_PAR: { codigo: "te654f654", name: "ALGORITMOS PARALELOS" },
   };
+
+  const imgs = {
+    pro_vdeojuegos: "https://www.gstatic.com/classroom/themes/img_bookclub.jpg",
+    data_min:
+      "https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/B2S-BlogHeader-ap_v05-2880x1200.jpg",
+    proye_inv:
+      "https://media.slidesgo.com/storage/1563060/6-classroom-headers-for-college.png",
+    algo_para:
+      "https://media.slidesgo.com/storage/1563071/15-classroom-headers-for-college.png",
+  };
   return (
     <WrapperTodayHorario open={openSidebar}>
       <WrapperInfoHoy>
@@ -88,10 +98,15 @@ const TodayHorario = ({expandible,closeNavLeft}) => {
           <b>Septiembre</b>
         </MonthDate>
       </WrapperInfoHoy>
-      
-     {expandible ? <HiddenSidebar onClick={handleOpen} src={sidebarImg} alt="s" /> :"" } 
+
+      {expandible ? (
+        <HiddenSidebar onClick={handleOpen} src={sidebarImg} alt="s" />
+      ) : (
+        ""
+      )}
       <ItemCurso
         data={codigos.PROG_VIDE.name}
+        img={imgs.pro_vdeojuegos}
         title="PROGRAMACION DE VIDEOJUEGOS"
         docente="LIMACHE FLORES, ALBERTO"
         participants="12"
@@ -102,6 +117,7 @@ const TodayHorario = ({expandible,closeNavLeft}) => {
         closeNavLeft={closeNavLeft}
       />
       <ItemCurso
+        img={imgs.data_min}
         data={codigos.DA_MIN.name}
         title="DATA MINING"
         docente="FLORES GUTIERREZ, VANEZA"
@@ -110,10 +126,10 @@ const TodayHorario = ({expandible,closeNavLeft}) => {
         infomation="info"
         color="#FF5733"
         contraido={openSidebar}
-        
         closeNavLeft={closeNavLeft}
       />
       <ItemCurso
+        img={imgs.proye_inv}
         data={codigos.PRO_INV.name}
         title="PROYECTO DE INVESTIGACION I"
         docente="LOAIZA FERNANDEZ, MANUEL "
@@ -122,10 +138,10 @@ const TodayHorario = ({expandible,closeNavLeft}) => {
         infomation="info"
         color="#82E0AA"
         contraido={openSidebar}
-      
         closeNavLeft={closeNavLeft}
       />
       <ItemCurso
+        img={imgs.algo_para}
         data={codigos.ALG_PAR.name}
         title="ALGORITMOS PARALELOS"
         docente="LIMACHE FLORES, ALBERTO"

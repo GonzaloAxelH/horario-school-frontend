@@ -12,7 +12,7 @@ const ItemWrapper = styled.div`
   width: 90%;
   border: none;
   box-shadow: 0px 3px 18px -8px gray;
-  background:url('${imgCurso}');
+  background:${(props) => `url(${props.img})`};
   background-position: center;
 	background-size: cover;
   border-radius: 7px;
@@ -102,6 +102,7 @@ const InfoExtra = styled.div`
 
 const ItemCurso = ({
   color,
+  img,
   title,
   docente,
   participants,
@@ -114,7 +115,7 @@ const ItemCurso = ({
   const [toggleInformation, setToggleInformation] = useState(false);
   const openInformation = () => setToggleInformation(!toggleInformation);
   return (
-    <ItemWrapper fondo={color} large={toggleInformation}>
+    <ItemWrapper fondo={color} large={toggleInformation} img={img}>
       <TitleCurse onClick={closeNavLeft} contraido={contraido} to={`/curso/${data}`}>
         {title}
       </TitleCurse>

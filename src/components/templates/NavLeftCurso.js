@@ -26,6 +26,9 @@ const WrongImg = styled.img`
   width: 20px;
 `;
 
+
+
+
 const NavLeftCurso = ({ handelClickOpenNavLeft, open}) => {
   return (
    <Wrapper open={open}>

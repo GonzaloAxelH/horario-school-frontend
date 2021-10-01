@@ -13,18 +13,11 @@ const ContainerCurso = styled.div`
 const WrapperAct = styled.div`
   display:flex;
   flex-direction:column;
-  align-self: center;
+  align-items:center;
   margin-top:128px;
   width:100%;
 `;
 
-const WrapperAct = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 128px;
-  width: 100%;
-`;
 
 export const ComponenteProyegido = ({ children,closeNavLeftClickAfuera}) => {
   useEffect(()=>{
