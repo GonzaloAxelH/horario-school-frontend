@@ -22,10 +22,6 @@ const CloseNav = styled.div`
   cursor: pointer;
   z-index:5;
 `;
-const WrongImg = styled.img`
-  width: 20px;
-`;
-
 
 
 

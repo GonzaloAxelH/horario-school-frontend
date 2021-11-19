@@ -1,6 +1,5 @@
 const CaseOfStudyImge = () => {
   return (
-
       <svg
         focusable="false"
         width="24"

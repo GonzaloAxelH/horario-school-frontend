@@ -50,12 +50,6 @@ const imgs = {
   algo_para:
     "https://media.slidesgo.com/storage/1563071/15-classroom-headers-for-college.png",
 };
- const selectImg = title  =>{
-    if(title === codigos.PRO_INV.name) return imgs.proye_inv
-    if(title === codigos.DA_MIN.name) return imgs.data_min  
-    if(title === codigos.PROG_VIDE.name) return imgs.pro_vdeojuegos  
-    if(title === codigos.ALG_PAR.name) return imgs.algo_para
-  }
 const PortadaCurso = ({ data }) => {
     
   const selectImg = title  =>{
@@ -64,7 +58,6 @@ const PortadaCurso = ({ data }) => {
     if(title === codigos.PROG_VIDE.name) return imgs.pro_vdeojuegos  
     if(title === codigos.ALG_PAR.name) return imgs.algo_para
   }
-
   return (
     <Wrapper img={selectImg(data)}>
       <TitleCurso>{data}</TitleCurso>

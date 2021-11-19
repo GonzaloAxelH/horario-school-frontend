@@ -60,12 +60,7 @@ const HiddenSidebar = styled.img`
     display: none;
   }
 `;
-const MiniCalendar = styled.img`
-  position: absolute;
-  left: 1em;
-  top: 1em;
-  cursor: pointer;
-`;
+
 const TodayHorario = ({ expandible, closeNavLeft }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const handleOpen = () => {
@@ -90,6 +85,7 @@ const TodayHorario = ({ expandible, closeNavLeft }) => {
     algo_para:
       "https://media.slidesgo.com/storage/1563071/15-classroom-headers-for-college.png",
   };
+
   return (
     <WrapperTodayHorario open={openSidebar}>
       <WrapperInfoHoy>

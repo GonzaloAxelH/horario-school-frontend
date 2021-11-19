@@ -11,13 +11,12 @@ const WrapperTrabajos = styled.div`
 `;
 const WrapperMenuOptions = styled.div`
   display: flex;
-  width:95vw;
-  justify-content: center;
+  width:90vw;
+  height:80px;
   margin:2em 0;
+  padding:1em;
+  justify-content: center;
   overflow-y: hidden;
-  height: 25px;
-  max-width:100vw;
-  box-sizing:border-box;
   @media(max-width:554px){
     justify-content: flex-start;
   }
@@ -26,7 +25,7 @@ const ItemMenuOption = styled.div`
   border: 1px solid #C2C2C2;
   margin: 0 1em;
   border-radius: 30px;
-  padding: 0.2em 1em;
+  padding:0.6em;
   display: flex;
   min-width:150px;
   align-items: center;
@@ -46,25 +45,25 @@ export const MenuOptions = ({ on, handelClickSelect }) => {
   return (
     <WrapperMenuOptions>
       <ItemMenuOption
-        on={on === "1" ? true : false}
+        on={on === "1"}
         onClick={() => handelClickSelect(1)}
       >
         <p>Hoy</p>
       </ItemMenuOption>
       <ItemMenuOption
-        on={on === "2" ? true : false}
+        on={on === "2"}
         onClick={() => handelClickSelect(2)}
       >
         <p>Ayer</p>
       </ItemMenuOption>
       <ItemMenuOption
-        on={on === "3" ? true : false}
+        on={on === "3"}
         onClick={() => handelClickSelect(3)}
       >
         <p>Semana Pasada</p>
       </ItemMenuOption>
       <ItemMenuOption
-        on={on === "4" ? true : false}
+        on={on === "4"}
         onClick={() => handelClickSelect(4)}
       >
         <p>Todo</p>

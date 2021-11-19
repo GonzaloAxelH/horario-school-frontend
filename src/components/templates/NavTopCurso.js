@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import HamburguerMenu from "../atoms/svg/HamburguerMenu";
 import { useEffect, useState } from "react";
-import { ComponenteProyegido } from "../pages/PageCurso";
 let imgUser =
   "https://lh3.googleusercontent.com/ogw/ADea4I6G9ODbVrzpSzl8oZhIwXpg8aP6dxx2HnD4g84y=s32-c-mo";
 const WrapperNav = styled.div`
@@ -63,6 +62,7 @@ const ItemNav = styled(Link)`
   padding: 0 1.8em;
   font-size: 14px;
   cursor: pointer;
+  transition:0.2s all;
   &:hover {
     background: ${(props) =>
       props.select ? "rgba(230, 244, 234,0.4 )" : "rgba(228, 228, 228, 0.4)"};
@@ -102,15 +102,8 @@ const NavTopCurso = ({ handelClickCloseNavLeft, data }) => {
     );
   });
   const checkSelectItem = (ruta) => {
-    return ruta === "conferencias"
-      ? false
-      : ruta === "trabajoenclase"
-      ? false
-      : ruta === "personas"
-      ? false
-      : ruta === "materiales"
-      ? false
-      : true;
+    let rutas = ["conferencias","trabajoenclase","personas","materiales"];
+    return !rutas.includes(ruta)
   };
   return (
     <WrapperNav>
@@ -131,6 +124,7 @@ const NavTopCurso = ({ handelClickCloseNavLeft, data }) => {
         <ItemNav select={checkSelectItem(ruta)} to={`/curso/${data}/`}>
           Hoy
         </ItemNav>
+        
         <ItemNav
           select={ruta === "conferencias"}
           to={`/curso/${data}/conferencias`}

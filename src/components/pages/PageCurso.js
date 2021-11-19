@@ -19,6 +19,9 @@ const WrapperAct = styled.div`
 `;
 
 
+
+
+
 export const ComponenteProyegido = ({ children,closeNavLeftClickAfuera}) => {
   useEffect(()=>{
       let body = document.getElementById('body');
